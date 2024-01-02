@@ -72,7 +72,7 @@ class OurClientController extends AdminMainController
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # ClearCash
     public function ClearCash(){
-        foreach ( config('app.lang_file') as $key=>$lang){
+        foreach ( config('app.WebLang') as $key=>$lang){
             Cache::forget('OurClient_Cash_'.$key);
         }
     }
@@ -126,7 +126,7 @@ class OurClientController extends AdminMainController
         $saveData = AdminHelper::saveAndDeletePhoto($saveData,$saveImgData);
         $saveData->save();
 
-        foreach ( config('app.lang_file') as $key=>$lang) {
+        foreach ( config('app.WebLang') as $key=>$lang) {
             $saveTranslation = OurClientTranslation::where('client_id',$saveData->id)->where('locale',$key)->firstOrNew();
             $saveTranslation->client_id = $saveData->id;
             $saveTranslation->locale = $key;

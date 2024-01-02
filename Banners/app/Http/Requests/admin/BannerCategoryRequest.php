@@ -18,7 +18,7 @@ class BannerCategoryRequest extends FormRequest
 
         ];
 
-        foreach(config('app.lang_file') as $key=>$lang){
+        foreach(config('app.WebLang') as $key=>$lang){
             if($id == '0'){
                 $rules[$key.".name"] = 'required|unique:banner_category_translations,name';
             }else{

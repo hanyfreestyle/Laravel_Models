@@ -69,7 +69,7 @@ class BannerController extends AdminMainController
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 #|||||||||||||||||||||||||||||||||||||| # ClearCash
     public function ClearCash(){
-        foreach ( config('app.lang_file') as $key=>$lang){
+        foreach ( config('app.WebLang') as $key=>$lang){
             Cache::forget('PagesList_Cash_'.$key);
         }
     }
@@ -138,7 +138,7 @@ class BannerController extends AdminMainController
         $saveData = AdminHelper::saveAndDeletePhoto($saveData,$saveImgData);
         $saveData->save();
 
-        foreach ( config('app.lang_file') as $key=>$lang) {
+        foreach ( config('app.WebLang') as $key=>$lang) {
             $saveTranslation = BannerTranslation::where('banner_id',$saveData->id)->where('locale',$key)->firstOrNew();
             $saveTranslation->banner_id = $saveData->id;
             $saveTranslation->locale = $key;

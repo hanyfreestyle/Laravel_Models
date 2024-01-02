@@ -17,7 +17,7 @@ class BlogPostRequest extends FormRequest
     protected function prepareForValidation()
     {
         $data = $this->toArray();
-        foreach(config('app.lang_file') as $key=>$lang){
+        foreach(config('app.WebLang') as $key=>$lang){
             data_set($data, $key.'.slug',  AdminHelper::Url_Slug($data[$key]['slug']) );
         }
         $this->merge($data);
@@ -25,7 +25,7 @@ class BlogPostRequest extends FormRequest
 
     public function rules(Request $request): array
     {
-        foreach(config('app.lang_file') as $key=>$lang){
+        foreach(config('app.WebLang') as $key=>$lang){
             $request->merge([$key.'.slug' => AdminHelper::Url_Slug($request[$key]['slug'])]);
         }
 
@@ -35,7 +35,7 @@ class BlogPostRequest extends FormRequest
             'published_at' => 'required|date_format:m/d/Y',
         ];
 
-        foreach(config('app.lang_file') as $key=>$lang){
+        foreach(config('app.WebLang') as $key=>$lang){
             $rules[$key.".name"] =   'required';
             $rules[$key.".des"] =   'required';
             $rules[$key.".g_title"] =   'required';

@@ -16,7 +16,7 @@ class OurClientRequest extends FormRequest
 //    protected function prepareForValidation()
 //    {
 //        $data = $this->toArray();
-//        foreach(config('app.lang_file') as $key=>$lang){
+//        foreach(config('app.WebLang') as $key=>$lang){
 //            data_set($data, $key.'.slug',  AdminHelper::Url_Slug($data[$key]['slug']) );
 //        }
 //        $this->merge($data);
@@ -26,7 +26,7 @@ class OurClientRequest extends FormRequest
     public function rules(Request $request): array
     {
 
-//        foreach(config('app.lang_file') as $key=>$lang){
+//        foreach(config('app.WebLang') as $key=>$lang){
 //            $request->merge([$key.'.slug' => AdminHelper::Url_Slug($request[$key]['slug'])]);
 //        }
 
@@ -36,7 +36,7 @@ class OurClientRequest extends FormRequest
 
         ];
 
-        foreach(config('app.lang_file') as $key=>$lang){
+        foreach(config('app.WebLang') as $key=>$lang){
 //            $rules[$key.".des"] =   'required';
 //            $rules[$key.".g_title"] =   'required';
 //            $rules[$key.".g_des"] =   'required';

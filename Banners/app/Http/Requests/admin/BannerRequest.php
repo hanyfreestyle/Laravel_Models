@@ -27,7 +27,7 @@ class BannerRequest extends FormRequest
                  "image"    => "required|mimes:jpg,jpeg,png,webp|max:1000",
             ];
         }
-        foreach(config('app.lang_file') as $key=>$lang){
+        foreach(config('app.WebLang') as $key=>$lang){
               $rules[$key.".name"] =   'required';
               $rules[$key.".url"] =   'nullable|url';
         }
